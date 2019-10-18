@@ -23,7 +23,7 @@ class TicTacToe {
         else{
             this.player=this.player
         }
-        console.log(this.matrix)
+        
     }
 
     isFinished() {
@@ -31,15 +31,40 @@ class TicTacToe {
     }
 
     getWinner() {
-
+        // console.log(this.matrix)
+        // for(let i=0;i<this.matrix.length;i++){
+        //     for(let j=0;j<this.matrix[i].length;j++){
+        //         if(this.matrix[i][j]==0 || this.matrix[i][j+1]==0 || this.matrix[i][j+2]==0){
+        //             return null;
+        //         }
+        //         if(this.matrix[i][j+2]!=0){
+        //             if(this.matrix[i][j+2]==this.matrix[i+1][j+1] && this.matrix[i][j+2]==this.matrix[i+2][j]){
+        //                 console.log(this.matrix[i][j+2])
+        //                 return this.matrix[i][j+2];
+        //             }
+        //         }
+        //     }
+        // }
     }
 
     noMoreTurns() {
-
+        let count=9;
+        for(let i=0; i<this.matrix.length;i++){
+            for(let j=0;j<this.matrix[i].length;j++){
+                if(this.matrix[i][j]!=0){
+                    count --;
+                }
+            }
+        }
+        if(count==0){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     isDraw() {
-
     }
 
     getFieldValue(rowIndex, colIndex) {
