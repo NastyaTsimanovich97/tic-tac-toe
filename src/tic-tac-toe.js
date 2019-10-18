@@ -27,24 +27,31 @@ class TicTacToe {
     }
 
     isFinished() {
-
+        if(this.getWinner() || this.isDraw()){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     getWinner() {
-        // console.log(this.matrix)
-        // for(let i=0;i<this.matrix.length;i++){
-        //     for(let j=0;j<this.matrix[i].length;j++){
-        //         if(this.matrix[i][j]==0 || this.matrix[i][j+1]==0 || this.matrix[i][j+2]==0){
-        //             return null;
-        //         }
-        //         if(this.matrix[i][j+2]!=0){
-        //             if(this.matrix[i][j+2]==this.matrix[i+1][j+1] && this.matrix[i][j+2]==this.matrix[i+2][j]){
-        //                 console.log(this.matrix[i][j+2])
-        //                 return this.matrix[i][j+2];
-        //             }
-        //         }
-        //     }
-        // }
+        if(this.matrix[0][0]==this.matrix[1][1] && this.matrix[0][0]==this.matrix[2][2] && this.matrix[0][0]!=0){
+            return this.matrix[0][0];
+        }
+        if(this.matrix[0][2]==this.matrix[1][1] && this.matrix[0][2]==this.matrix[2][0] && this.matrix[0][2]!=0){
+            return this.matrix[0][2];
+        }
+        
+        for(let i=0; i<3; i++){
+            if(this.matrix[i][0]==this.matrix[i][1] && this.matrix[i][0]==this.matrix[i][2] && this.matrix[i][0]!=0){
+                return this.matrix[i][0];
+            }
+            if(this.matrix[0][i]===this.matrix[1][i] && this.matrix[0][i]===this.matrix[2][i] && this.matrix[0][i]!=0){
+                return this.matrix[0][i];
+            }                   
+        }
+        return null;
     }
 
     noMoreTurns() {
@@ -65,6 +72,21 @@ class TicTacToe {
     }
 
     isDraw() {
+        let count=9;
+        for(let i=0; i<this.matrix.length;i++){
+            for(let j=0;j<this.matrix[i].length;j++){
+                if(this.matrix[i][j]!=0){
+                    count --;
+                }
+            }
+        }
+        if(count==0 && !this.getWinner()){
+            return true;
+        }
+        else{
+            return false;
+        }
+           
     }
 
     getFieldValue(rowIndex, colIndex) {
