@@ -23,6 +23,7 @@ class TicTacToe {
         else{
             this.player=this.player
         }
+        console.log(this.matrix)
     }
 
     isFinished() {
@@ -42,7 +43,10 @@ class TicTacToe {
     }
 
     getFieldValue(rowIndex, colIndex) {
-
+        if(this.matrix[rowIndex][colIndex]==0){
+            return null;
+        }
+        return this.matrix[rowIndex][colIndex];
     }
 }
 
